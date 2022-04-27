@@ -5,9 +5,23 @@ import java.util.List;
 
 public class WildcardExample {
 
-    public static <T> void printNames_fathersAndChildrenOnly(List<Father> t){
+    public static <T extends Father> void printNames_fathersAndChildrenOnly(List<T> t){
         System.out.println(t);
     }
+
+//    public static <T extends Grampa> void printNames_all(List<T> t){
+//        System.out.println(t);
+//    }
+    public static void printNames_all(List<? extends Grampa> t){
+        System.out.println(t);
+    }
+
+
+    public static void printNames_grampasAndFathersOnly(List<? super Father> t){
+        System.out.println(t);
+    }
+
+
 
     public static void main(String[] args) {
         List <Grampa> grampas = List.of(
@@ -28,12 +42,24 @@ public class WildcardExample {
 
         WildcardExample wildEx = new WildcardExample();
 
+        wildEx.printNames_all(grampas);
+        wildEx.printNames_all(fathers);
+        wildEx.printNames_all(children);
+
         wildEx.printNames_fathersAndChildrenOnly(fathers);
+        wildEx.printNames_fathersAndChildrenOnly(children);
+        //wildEx.printNames_fathersAndChildrenOnly(grampas);
+
+        wildEx.printNames_grampasAndFathersOnly(grampas);
+        wildEx.printNames_grampasAndFathersOnly(fathers);
+        //wildEx.printNames_grampasAndFathersOnly(children);
 
 
 
 
 
     }
+
+
 
 }
