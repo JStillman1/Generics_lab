@@ -10,7 +10,7 @@ public class Grampa {
 
     @Override
     public String toString() {
-        return "Grampa{" +
+        return "{" +
                 "name='" + name + '\'' +
                 "class='" + this.getClass() + "\'" +
                 '}';
