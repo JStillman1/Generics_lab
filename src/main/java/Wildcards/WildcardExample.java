@@ -5,6 +5,8 @@ import java.util.List;
 
 public class WildcardExample {
 
+    //<T extends Father> means we only accept types that extend the Father class, i.e. Father and Child
+    //Could equivalently use static void ____ (List<? extends Father> t )
     public static <T extends Father> void printNames_fathersAndChildrenOnly(List<T> t){
         System.out.println(t);
     }
@@ -12,11 +14,15 @@ public class WildcardExample {
 //    public static <T extends Grampa> void printNames_all(List<T> t){
 //        System.out.println(t);
 //    }
+
+    //List<? extends Grampa> t allows any (wildcard) type that extends Grampa, i.e. Grampa, Father, Child
     public static void printNames_all(List<? extends Grampa> t){
         System.out.println(t);
     }
 
 
+    // List<? super Father> means it allows any class that is a super class to Father, i.e. Father, Grampa
+    //Here we can't use static <T super Father>
     public static void printNames_grampasAndFathersOnly(List<? super Father> t){
         System.out.println(t);
     }
